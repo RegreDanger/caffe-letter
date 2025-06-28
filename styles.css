@@ -1,0 +1,267 @@
+/* Contenedor principal */
+ html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+ body {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+	font-family: sans-serif;
+	background-image: url('./images/background.png');
+	background-size: 100% 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+#flowerCanvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 9999;
+}
+
+@font-face {
+	font-family: 'Lobster';
+	src: url('./fonts/Lobster-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.frame-photo-album {
+	position: absolute;
+	top: 60%;
+	left: 0;
+	width: 50%;
+	height: 50%;
+	background-image: url('./images/frame.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	pointer-events: none;
+	transition: all .2s ease-in-out;
+	z-index: 9999;
+}
+
+ .photo-album {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	display: flex;
+	align-items: center;
+	width: 85%;
+	height: 85%;
+	padding: 25px;
+	background-image: url('./images/album-photo-background.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border-radius: 10px;
+	box-sizing: border-box;
+}
+ .photo-album-inner {
+	position: absolute;
+	top: 90px;
+	left: 10px;
+	display: flex;
+	width: 100%;
+	height: 50%;
+	align-items: center;
+	flex-direction: column;
+	rotate: 5deg;
+	overflow-x: hidden;
+	overflow-y: auto;
+	scrollbar-color: rgba(0, 0, 0, 0) rgb(0, 0, 0, 0);
+}
+ .photo-album-inner-structure {
+	column-width: 100px;
+	column-count: 1;
+	column-gap: 50px;
+	width: 100%;
+	text-align: center;
+	box-sizing: border-box;
+}
+ .card{
+	margin: 0 1.5rem 1.5rem 0;
+	display: inline-block;
+	width: 50%;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+	background-color: white;
+	border: solid 2px black;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+	transition: all 0.25s ease-in-out;
+	box-sizing: border-box;
+	break-inside: avoid;
+}
+ .card:hover {
+	border-color: blue;
+	p {
+	    color: blue;
+    }
+}
+ .card img {
+	height: 50%;
+	width: 100%;
+	filter: grayscale(100%);
+	border-radius: 5px;
+	transition: all 0.25s ease-in-out;
+	display: block;
+}
+ .card:hover img {
+	filter: grayscale(0);
+}
+ .card p {
+	margin: 5px 0;
+	padding: 0;
+	text-align: center;
+	font-style: italic;
+	font-size: 0.9rem;
+	color: black;
+}
+
+
+
+
+/* Book */
+ .book {
+	position: relative;
+	width: 350px;
+	height: 500px;
+	transition: transform 0.5s;
+}
+ .paper-background {
+	position: absolute;
+	top: 20px;
+	left: 15px;
+	width: 90%;
+	height: 90%;
+	background-image: url('./images/letter.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+ .paper {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	perspective: 1500px;
+}
+ .front, .back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 90%;
+	height: 90%;
+	background-image: url('./images/cover.jpg');
+	background-size: 100% 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: 10px solid #425593;
+	border-radius: 10px;
+	transform-origin: left;
+	transition: transform 0.5s;
+}
+ .front {
+	z-index: 1;
+	backface-visibility: hidden;
+	border-left: 3px solid powderblue;
+}
+ .back {
+	z-index: 0;
+}
+ .front-content, .back-content {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+
+ .text {
+	position: absolute;
+	font-family: 'Lobster';
+	color: blue;
+}
+
+.basic-title {
+	border-radius: 10%;
+	font-size: 25px;
+	background-color: white;
+}
+
+.text-p1 {
+	top: 30%;
+	left: 10%;
+	width: 80%;
+	color: darkblue;
+	font-size: 20px;
+}
+
+.title {
+	top: 0;
+	left: 0;
+	text-align: left;
+}
+
+.end {
+	bottom: 0;
+	right: 0;
+	text-align: right;
+}
+
+ .back-content {
+	transform: rotateY(180deg) 
+}
+/* Paper flip effect */
+ .flipped .front, .flipped .back {
+	transform: rotateY(-180deg);
+}
+/* Controller Buttons */
+ button {
+	width: 100px;
+	height: 50px;
+	border: 3px dotted white;
+	border-radius: 10%;
+	background-color: #425593;
+	color: white;
+	cursor: pointer;
+	margin: 10px;
+	transition: all 0.5s;
+}
+
+#prev-btn {
+	position: absolute;
+	top: 47%;
+	left: 35%;
+	opacity: 0;
+}
+
+#next-btn {
+	position: absolute;
+	bottom: 40%;
+	right: 35%;
+}
+
+/* Paper stack order */
+ #p1 {
+	z-index: 3;
+}
+ #p2 {
+	z-index: 2;
+}
+ #p3 {
+	z-index: 1;
+}
